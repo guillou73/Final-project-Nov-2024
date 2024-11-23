@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce  # One node can access at a time
+  resources:
+    requests:
+      storage: 1Gi  # Must be equal to or less than the PV capacity
+  storageClassName: standard  # Ensure this matches your PV storage class

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain  # Ensure data is not deleted when PV is released
+  storageClassName: standard
+  hostPath:
+    path: /mnt/data/mysql  # Update with the appropriate path for your EKS worker node
+    type: DirectoryOrCreate
